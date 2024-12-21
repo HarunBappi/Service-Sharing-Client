@@ -2,20 +2,30 @@
 
 export default function Footer() {
   return (
-    <footer className="footer bg-base-300 text-base-content p-10">
+  <div>
+    <footer className="footer bg-[#EBECEF] text-base-content p-10">
   <nav>
-    <h6 className="footer-title">Services</h6>
-    <a className="link link-hover">Branding</a>
-    <a className="link link-hover">Design</a>
-    <a className="link link-hover">Marketing</a>
-    <a className="link link-hover">Advertisement</a>
+    <h6 className="footer-title">Conatct</h6>
+    <a className="link link-hover">01945188888</a>
+    <a className="link link-hover">info@shareserve.com</a>
+    <a className="text-sm font-semibold">Corporate Address</a>
+    <a className="link link-hover">House No: 1349, <br /> West Shewrapara, mirpur, dhaka</a>
+  </nav>
+  <nav>
+
+    <h6 className="footer-title">Other Pages</h6>
+    <a className="link link-hover"> Blog</a>
+    <a className="link link-hover">Help</a>
+    <a className="link link-hover">Terms of use</a>
+    <a className="link link-hover">Privacy Policy</a>
+    <a className="link link-hover">Sitemap</a>
   </nav>
   <nav>
     <h6 className="footer-title">Company</h6>
-    <a className="link link-hover">About us</a>
-    <a className="link link-hover">Contact</a>
-    <a className="link link-hover">Jobs</a>
-    <a className="link link-hover">Press kit</a>
+    <a className="link link-hover">sManager</a>
+    <a className="link link-hover">sBusiness</a>
+    <a className="link link-hover">sDelivery</a>
+    <a className="link link-hover">sBondhu</a>
   </nav>
   <nav>
     <h6 className="footer-title">Social</h6>
@@ -56,5 +66,9 @@ export default function Footer() {
     </div>
   </nav>
 </footer>
+<div className="bg-[#DFE0E3] py-4">
+    <h1 className="text-center text-gray-900 font-medium">Copyright &copy; 2024 <span className="text-blue-600">ShareServe</span> Platform Limited | <br className="md:hidden lg:hidden"/> All Rights Reserved</h1>
+</div>
+  </div>
   )
 }
