@@ -12,6 +12,7 @@ import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import slider1 from "../../assets/slider1.jpg";
 import slider2 from "../../assets/slider2.jpg";
 import slider3 from "../../assets/slider3.jpg";
+import slider4 from "../../assets/slider4.jpg";
 
 export default function Banner() {
   const progressCircle = useRef(null);
@@ -39,6 +40,9 @@ export default function Banner() {
       >
         <SwiperSlide>
           <img src={slider1} alt="" />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={slider4} alt="" />
         </SwiperSlide>
         <SwiperSlide>
           <img src={slider2} alt="" />
