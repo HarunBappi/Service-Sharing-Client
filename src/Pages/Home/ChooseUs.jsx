@@ -9,7 +9,7 @@ export default function ChooseUs() {
     <div className="bg-gray-100">
       <div className="w-4/6 mx-auto pt-5">
         <h1 className="text-3xl text-gray-800">-WHY CHOOSE US</h1>
-        <h3 className="text-2xl text-gray-800">
+        <h3 className="text-2xl text-gray-500 mt-2">
           Because we care about your safety..
         </h3>
       </div>
@@ -33,7 +33,7 @@ export default function ChooseUs() {
           </div>
         </div>
         <div>
-          <img src={team} alt="" />
+          <img className="rounded-md" src={team} alt="" />
         </div>
       </div>
     </div>
