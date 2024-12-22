@@ -42,6 +42,16 @@ export default function Navbar() {
           </li>
           <li>
             <NavLink
+              to="/allServices"
+              className={({ isActive }) =>
+                `${isActive ? "text-yellow-500" : ""}`
+              }
+            >
+              All Services
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
               to="/services"
               className={({ isActive }) =>
                 `${isActive ? "text-yellow-500" : ""}`
@@ -51,40 +61,48 @@ export default function Navbar() {
             </NavLink>
           </li>
           {user && (
-             <li className="relative">
-             <NavLink
-               to="/dashboard"
-               className={({ isActive }) => `${isActive ? "text-yellow-500" : ""}`}
-               onClick={handleDropdownToggle}
-             >
-               Dashboard
-             </NavLink>
-             {/* Submenu */}
-             {isDropdownOpen && (
-               <ul className="absolute bg-white shadow-lg rounded-md mt-2 p-2 w-40 z-10">
-                 <li>
-                   <a href="/addService" className="block px-4 py-2 hover:bg-gray-100">
-                     Add Service
-                   </a>
-                 </li>
-                 <li>
-                   <a href="/manageService" className="block px-4 py-2 hover:bg-gray-100">
-                   Manage Service
-                   </a>
-                 </li>
-                 <li>
-                 <a href="/bookedService" className="block px-4 py-2 hover:bg-gray-100">
-                 Booked-Services
-                   </a>
-                 </li>
-                 <li>
-                   <a href="/serviceTodo" className="block px-4 py-2 hover:bg-gray-100">
-                   Service-To-Do
-                   </a>
-                 </li>
-               </ul>
-             )}
-           </li>
+            <li className="relative">
+              <button onClick={handleDropdownToggle}>Dashboard</button>
+              {/* Submenu */}
+              {isDropdownOpen && (
+                <ul className="absolute bg-white shadow-lg rounded-md mt-2 p-2 w-40 z-10">
+                  <li>
+                    <NavLink
+                      to="/addService"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                      
+                    >
+                      
+                      Add Service
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/manageService"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                    >
+                      Manage Service
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/bookedService"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                    >
+                      Booked-Services
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to="/serviceTodo"
+                      className="block px-4 py-2 hover:bg-gray-100"
+                    >
+                      Service-To-Do
+                    </NavLink>
+                  </li>
+                </ul>
+              )}
+            </li>
           )}
         </ul>
       </div>

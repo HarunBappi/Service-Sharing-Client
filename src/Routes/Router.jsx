@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomeLayout from "../Layouts/HomeLayout";
+import AllServices from "../Pages/AllServices";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
 import AddService from "../Pages/Dashboard/AddService";
 import BookedService from "../Pages/Dashboard/BookedService";
-import Dashboard from "../Pages/Dashboard/Dashboard";
 import ManageService from "../Pages/Dashboard/ManageService";
 import ServiceToDO from "../Pages/Dashboard/ServiceToDO";
 import ErrorPage from "../Pages/ErrorPage";
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
         {
             path: 'services',
             element:<Services></Services>
+        }, 
+        {
+            path: 'allServices',
+            element:<AllServices></AllServices>
         },
         {
             path:'login',
@@ -34,10 +38,6 @@ const router = createBrowserRouter([
         {
             path:'register',
             element:<Register></Register>
-        },
-        {
-            path:'dashboard',
-            element:<Dashboard></Dashboard>
         },
         {
             path:'addService',
