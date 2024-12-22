@@ -7,14 +7,14 @@ import iconImg from "../../assets/share.png";
 import AuthContext from "../../Providers/AuthContext";
 
 export default function Login() {
-  const { handleSignIn, signInGoogle } = useContext(AuthContext);
+  const { handleSignIn, signInGoogle, setLoading } = useContext(AuthContext);
   const location = useLocation()
   const navigate = useNavigate()
   const from = location?.state || '/'
   // google
   const handleGoogleSignin = () => {
     signInGoogle();
-    toast.success('google register successfully!')
+    toast.success('google SignIn successfully!')
     navigate (from)
   };
 
@@ -31,6 +31,10 @@ export default function Login() {
       console.log("sign in successfully done",result.user)
       toast.success('log in successfully done!!')
       navigate(from)
+    })
+    .catch(() =>{
+      toast.error('user not available! please signUp')
+      setLoading(false)
     })
   }
 

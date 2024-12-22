@@ -6,7 +6,7 @@ import register from "../../assets/register.png";
 import iconImg from "../../assets/share.png";
 import AuthContext from "../../Providers/AuthContext";
 export default function Register() {
-  const { signInGoogle, handleRegister, setUser } = useContext(AuthContext);
+  const { signInGoogle, handleRegister, updateUserProfile,  setUser, } = useContext(AuthContext);
   const [error, setError] = useState("");
   const navigate = useNavigate();
   // Google register
@@ -37,11 +37,16 @@ export default function Register() {
       setError("Password didn't match.");
       return;
     }
-    handleRegister(email, password).then((result) => {
-      console.log(result.user);
+    handleRegister(email, password)
+    .then(() => {
+      updateUserProfile(name,photoUrl);
+      setUser({displayName: name, photoUrl})
       toast.success("Register Successfully Done!!");
       navigate('/')
-    });
+    })
+    .catch(() =>{
+      toast.error('already your account. please sign up')
+    })
   };
 
   return (
