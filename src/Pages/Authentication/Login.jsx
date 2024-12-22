@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import google from "../../assets/google.png";
 import loginImg from "../../assets/login.jpg";
 import iconImg from "../../assets/share.png";
@@ -8,11 +8,14 @@ import AuthContext from "../../Providers/AuthContext";
 
 export default function Login() {
   const { handleSignIn, signInGoogle } = useContext(AuthContext);
-
+  const location = useLocation()
+  const navigate = useNavigate()
+  const from = location?.state || '/'
   // google
   const handleGoogleSignin = () => {
     signInGoogle();
     toast.success('google register successfully!')
+    navigate (from)
   };
 
   // email and password sign in
@@ -22,6 +25,13 @@ export default function Login() {
     const email = form.email.value
     const password = form.password.value
     console.log(email, password)
+
+    handleSignIn(email,password)
+    .then(result => {
+      console.log("sign in successfully done",result.user)
+      toast.success('log in successfully done!!')
+      navigate(from)
+    })
   }
 
   return (

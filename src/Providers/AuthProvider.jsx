@@ -32,10 +32,6 @@ const handleLogOut = ()=>{
     return signOut(auth)
 }
 
-
-
-
-
 const userInfo = {
     user, 
     setUser,

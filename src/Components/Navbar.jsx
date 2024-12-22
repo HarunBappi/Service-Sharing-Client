@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import navbarLogo from '../assets/navbarLogo.png';
+import AuthContext from '../Providers/AuthContext';
 export default function Navbar() {
+  const {user} = useContext(AuthContext)
   return (
     <div className='flex items-center justify-between container mx-auto shadow-md bg-base-100 px-4 py-2'>
       <div className='flex items-center gap-3'>
@@ -18,9 +21,13 @@ export default function Navbar() {
         </ul>
       </div>
       <div>
-        <Link to='/login'>
+        {
+          user ? 
+          <button className='btn'>Log Out</button>
+           : <Link to='/login'>
         <button className='btn'>Login</button>
         </Link>
+        }
       </div>
     </div>
   );
