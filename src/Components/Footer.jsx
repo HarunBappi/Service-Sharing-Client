@@ -3,7 +3,7 @@
 export default function Footer() {
   return (
   <div>
-    <footer className="footer bg-[#EBECEF] text-base-content p-10">
+    <footer className="footer bg-[#EBECEF] dark:bg-gray-900 text-base-content p-10 dark:text-white">
   <nav>
     <h6 className="footer-title">Conatct</h6>
     <a className="link link-hover">01945188888</a>
@@ -66,8 +66,8 @@ export default function Footer() {
     </div>
   </nav>
 </footer>
-<div className="bg-[#DFE0E3] py-4">
-    <h1 className="text-center text-gray-900 font-medium">Copyright &copy; 2024 <span className="text-blue-600">ShareServe</span> Platform Limited | <br className="md:hidden lg:hidden"/> All Rights Reserved</h1>
+<div className="bg-[#DFE0E3] py-4 dark:bg-gray-900 dark:text-white">
+    <h1 className="text-center text-gray-900 font-medium dark:text-white">Copyright &copy; 2024 <span className="text-blue-600">ShareServe</span> Platform Limited | <br className="md:hidden lg:hidden"/> All Rights Reserved</h1>
 </div>
   </div>
   )

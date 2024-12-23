@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Link, NavLink } from "react-router-dom";
 import navbarLogo from "../assets/navbarLogo.png";
 import AuthContext from "../Providers/AuthContext";
+import DarkLight from "./DarkLight/DarkLight";
 export default function Navbar() {
   const { user, signOutUser, loading } = useContext(AuthContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -23,7 +24,7 @@ export default function Navbar() {
     );
   }
   return (
-    <div className="flex items-center justify-between container mx-auto shadow-md bg-base-100 px-4 py-2">
+    <div className="flex items-center justify-between container mx-auto shadow-md bg-base-100 px-4 py-2 dark:bg-gray-900 dark:text-white">
       <div className="flex items-center gap-3">
         <img className="w-20" src={navbarLogo} alt="" />
         <h1 className="text-2xl font-bold">ShareServe</h1>
@@ -106,7 +107,7 @@ export default function Navbar() {
           )}
         </ul>
       </div>
-      <div>
+      <div className="flex items-center gap-3">
         {user ? (
           <div className="flex items-center gap-3">
             <div title={user.displayName} className="w-10 rounded-full">
@@ -125,6 +126,7 @@ export default function Navbar() {
             <button className="btn">Login</button>
           </Link>
         )}
+      <DarkLight></DarkLight>
       </div>
     </div>
   );
