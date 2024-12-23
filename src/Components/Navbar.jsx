@@ -112,7 +112,7 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             <div title={user.displayName} className="w-10 rounded-full">
               <img
-                className="w-10 rounded-full border-green-600 "
+                className="w-10 rounded-full border-green-600 border-2"
                 src={user.photoURL}
                 alt=""
               />

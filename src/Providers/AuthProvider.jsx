@@ -45,6 +45,7 @@ const updateUserProfile = (name, photo) =>{
  useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, currentUser =>{
         setUser(currentUser)
+        console.log("Cuurent user", currentUser)
         console.log('currentUser --', currentUser)
         setLoading(false)
     })

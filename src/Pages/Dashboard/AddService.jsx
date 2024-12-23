@@ -1,7 +1,14 @@
+import { useContext } from "react";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../Providers/AuthContext";
+
 export default function AddService() {
+  const {user} = useContext(AuthContext)
+  const navigate = useNavigate()
 
 const handleSubmit = e => {
-  e.preventDefautt()
+  e.preventDefault();
   const form = e.target
   const imageUrl = form.imageUrl.value
   const serviceName = form.serviceName.value
@@ -10,6 +17,39 @@ const handleSubmit = e => {
   const description = form.description.value
 
   console.log(imageUrl,serviceName,price,serviceArea,description)
+
+const servicesData = {
+  imageUrl,
+  provider: {
+    email: user?.email,
+    name: user?.displayName,
+    photo: user?.photoURL
+  },
+  serviceName,
+  price,
+  serviceArea,
+  description
+
+}
+
+ fetch('http://localhost:3000/add-services',{
+   method : 'POST',
+    headers : {
+      'content-type' : 'application/json'
+    },
+    body : JSON.stringify(servicesData)
+ })
+ .then(res => res.json())
+ .then(result => {
+  if(result.insertedId){
+    toast.success('Services added Successfully!')
+    navigate('/')
+  }
+ })
+ .catch(err => {
+  console.log(err.message)
+ })
+
 }
 
   return (
