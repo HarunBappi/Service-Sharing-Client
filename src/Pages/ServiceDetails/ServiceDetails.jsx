@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 
 export default function ServiceDetails() {
@@ -16,6 +17,9 @@ export default function ServiceDetails() {
 
   return (
     <div className="card card-compact bg-base-100 dark:bg-gray-900  shadow-xl mb-5 mt-5 w-9/12 mx-auto dark:text-white">
+      <Helmet>
+              <title>ShareServe | Service Details</title>
+            </Helmet>
       <figure>
         <img className="w-full h-[350px]" src={service.imageUrl} alt="Shoes" />
       </figure>

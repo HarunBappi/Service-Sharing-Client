@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
 import ServicesCard from "./ServicesCard/ServicesCard";
 
@@ -28,6 +29,9 @@ export default function AllServices() {
   }
   return (
     <div>
+      <Helmet>
+        <title>ShareServe | All Services</title>
+      </Helmet>
       {/* Search */}
       <div className="flex flex-col md:flex-row justify-center items-center mb-8 gap-2 mt-4">
         <label className="label">

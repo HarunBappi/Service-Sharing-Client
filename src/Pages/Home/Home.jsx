@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Link, useLoaderData } from "react-router-dom";
 import ServicesCard from "../ServicesCard/ServicesCard";
 import Banner from "./Banner";
@@ -9,6 +10,9 @@ export default function Home() {
   const services = useLoaderData()
   return (
     <div>
+      <Helmet>
+        <title>ShareServe | Home</title>
+      </Helmet>
       <Banner></Banner>
         {/* Popular Services */}
         <h1 className="text-3xl ml-10 mb-5 mt-8">Popular Services</h1>

@@ -12,3 +12,8 @@ body {
 .dark {
   @apply bg-gray-900 text-black;
 }
+
+html {
+  overflow-x: hidden; /* Horizontal overflow hide */
+  overflow-y: auto; /* Vertical scrolling allow */
+}

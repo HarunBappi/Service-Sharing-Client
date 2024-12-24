@@ -1,7 +1,7 @@
-import share from '../assets/share.png';
+import share from "../assets/share.png";
 export default function Footer() {
   return (
-    <div>
+    <div data-aos="zoom-in-down">
       <footer className="footer bg-[#EBECEF] dark:bg-gray-900 text-base-content p-10 dark:text-white">
         <nav>
           <h6 className="footer-title">Conatct</h6>
@@ -31,7 +31,7 @@ export default function Footer() {
           <h6 className="footer-title flex items-center gap-2">
             <img src={share} alt="" />
             Share Serve
-            </h6>
+          </h6>
           <div className="grid grid-flow-col gap-4">
             <a>
               <svg

@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../Providers/AuthContext";
@@ -54,6 +55,9 @@ const servicesData = {
 
   return (
     <div className="hero min-h-screen container mx-auto mt-5 mb-5">
+      <Helmet>
+              <title>ShareServe | Add Service</title>
+            </Helmet>
         <div className="card bg-green-100 w-2/3 mx-auto shadow-2xl">
           <form onSubmit={handleSubmit} className="card-body">
             <div className="form-control">

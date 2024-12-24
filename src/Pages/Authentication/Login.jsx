@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import google from "../../assets/google.png";
@@ -46,6 +47,9 @@ export default function Login() {
 
   return (
     <div className="flex justify-center items-center my-12">
+      <Helmet>
+              <title>ShareServe | Login</title>
+            </Helmet>
       <div className="flex w-full max-w-sm mx-auto bg-white rounded-l-lg shadow-lg  lg:max-w-4xl ">
         <div
           className="hidden bg-cover bg-center lg:block lg:w-1/2"
