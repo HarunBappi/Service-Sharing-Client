@@ -9,7 +9,7 @@ export default function AllServices() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:3000/allServices?searchParams=${search}`)
+    fetch(`${import.meta.env.VITE_API_URL}/allServices?searchParams=${search}`)
       .then((res) => res.json())
       .then((data) => {
         setSearchServices(data);

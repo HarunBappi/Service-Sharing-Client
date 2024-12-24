@@ -8,35 +8,41 @@ import AuthContext from "../../Providers/AuthContext";
 
 export default function Login() {
   const { handleSignIn, signInGoogle, setLoading } = useContext(AuthContext);
-  const location = useLocation()
-  const navigate = useNavigate()
-  const from = location?.state || '/'
+  const location = useLocation();
+  const navigate = useNavigate();
+
   // google
   const handleGoogleSignin = () => {
-    signInGoogle();
-    toast.success('google SignIn successfully!')
-    navigate (from)
+    signInGoogle()
+    .then(() => {
+      toast.success("google SignIn successfully!");
+      navigate(location.state?.from?.pathname || "/", { replace: true });
+    })
+    .catch(() => {
+      toast.error("Google Sign-In failed!");
+    });
+    
   };
 
   // email and password sign in
-  const handleSubmit = (e) =>{
-    e.preventDefault()
-    const form = e.target
-    const email = form.email.value
-    const password = form.password.value
-    console.log(email, password)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
 
-    handleSignIn(email,password)
-    .then(result => {
-      console.log("sign in successfully done",result.user)
-      toast.success('log in successfully done!!')
-      navigate(from)
-    })
-    .catch(() =>{
-      toast.error('user not available! please signUp')
-      setLoading(false)
-    })
-  }
+    handleSignIn(email, password)
+      .then((result) => {
+        console.log("sign in successfully done", result.user);
+        toast.success("log in successfully done!!");
+        navigate(location.state?.from?.pathname || "/", { replace: true });
+      })
+      .catch(() => {
+        toast.error("user not available! please signUp");
+        setLoading(false);
+      });
+  };
 
   return (
     <div className="flex justify-center items-center my-12">

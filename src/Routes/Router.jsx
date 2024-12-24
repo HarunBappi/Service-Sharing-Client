@@ -9,7 +9,9 @@ import ManageService from "../Pages/Dashboard/ManageService";
 import ServiceToDO from "../Pages/Dashboard/ServiceToDO";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
+import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
 import Services from "../Pages/Services";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
         {
             index: true,
             element:<Home></Home>,
-            loader : ()=> fetch('http://localhost:3000/home')
+            loader : ()=> fetch(`${import.meta.env.VITE_API_URL}/home`)
         },
         {
             path: 'services',
@@ -31,7 +33,7 @@ const router = createBrowserRouter([
         {
             path: 'allServices',
             element:<AllServices></AllServices>,
-            loader: ()=> fetch('http://localhost:3000/allServices')
+            loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/allServices`)
         },
         {
             path:'login',
@@ -43,7 +45,9 @@ const router = createBrowserRouter([
         },
         {
             path:'addService',
-            element:<AddService></AddService>
+            element:<PrivateRoute>
+                <AddService></AddService>
+            </PrivateRoute>
         },
         {
             path:'manageService',
@@ -57,6 +61,12 @@ const router = createBrowserRouter([
             path:'serviceTodo',
             element:<ServiceToDO></ServiceToDO>
         },
+        {
+            path: 'details/:id',
+            element: <PrivateRoute>
+                <ServiceDetails></ServiceDetails>
+            </PrivateRoute>
+        }
     ]
     }
 ])
