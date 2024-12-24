@@ -43,7 +43,7 @@ export default function DarkLight() {
 
         {/* moon icon */}
         <svg
-          className="swap-off h-10 w-10 fill-current text-white bg-gray-800 rounded-md mt-2"
+          className="swap-off h-10 w-10 fill-current text-white bg-[#C71F66] rounded-md mt-2"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
         >

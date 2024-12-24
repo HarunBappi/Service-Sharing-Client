@@ -27,7 +27,7 @@ export default function ServiceDetails() {
         <h2 className="card-title">{service.serviceName}</h2>
         <p title={service.description}>{service.description}...</p>
         <p>Price: {service.price} BDT</p>
-        <div className="divider divider-accent">
+        <div className="divider divider-accent text-[#C71F66]">
           Service Provider Information
         </div>
         <div className="flex items-start justify-between">
@@ -41,7 +41,7 @@ export default function ServiceDetails() {
             <p className="flex items-center gap-3 text-xl font-medium text-gray-800 dark:text-gray-400">
               Provider Image:{" "}
               <img
-                className="w-12 rounded-full border-green-500 border"
+                className="w-12 rounded-full border-[#C71F66] border"
                 src={service.provider?.photo}
                 alt=""
               />
@@ -57,6 +57,7 @@ export default function ServiceDetails() {
             </h4>
           </div>
         </div>
+        <button className='btn text-xl text-white bg-[#C71F66] hover:bg-[#f14e92]'>Book Now</button>
       </div>
     </div>
   );

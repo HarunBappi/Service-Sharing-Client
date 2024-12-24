@@ -23,7 +23,7 @@ export default function Home() {
         {/* ALL Services Button */}
         <div className="flex justify-center mb-5 mt-3">
         <Link to='/allServices'>
-        <button className="btn btn-info w-52 text-xl text-gray-900">All Services</button>
+        <button className="btn text-white bg-[#C71F66] hover:bg-[#f14e92] w-52 text-xl ">All Services</button>
         </Link>
         </div>
         {/* ChooseUs Section */}
