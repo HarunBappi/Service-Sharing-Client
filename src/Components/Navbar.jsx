@@ -5,7 +5,7 @@ import navbarLogo from "../assets/navbarLogo.png";
 import AuthContext from "../Providers/AuthContext";
 import DarkLight from "./DarkLight/DarkLight";
 export default function Navbar() {
-  const { user, signOutUser, loading } = useContext(AuthContext);
+  const { user, signOutUser} = useContext(AuthContext);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   // DropDown Button
   const handleDropdownToggle = () => {
@@ -16,13 +16,7 @@ export default function Navbar() {
     signOutUser();
     toast.success("User Logout success!");
   };
-  if (loading) {
-    return (
-      <div>
-        <span className="loading loading-spinner text-info"></span>
-      </div>
-    );
-  }
+ 
   return (
     <div className="flex items-center justify-between container mx-auto shadow-md bg-base-100 px-4 py-2 dark:bg-gray-900 dark:text-white">
       <div className="flex items-center gap-3">
