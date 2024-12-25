@@ -10,66 +10,83 @@ import ServiceToDO from "../Pages/Dashboard/ServiceToDO";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
+import UpdateServices from "../Pages/UpdateServices";
 import PrivateRoute from "./PrivateRoute";
 
-
-
 const router = createBrowserRouter([
-    {
-        path: '/',
-        element:<HomeLayout></HomeLayout>,
-        errorElement: <ErrorPage></ErrorPage>,
-        children:[
-        {
-            index: true,
-            element:<Home></Home>,
-            loader : ()=> fetch(`${import.meta.env.VITE_API_URL}/home`)
-        },
-        {
-            path: 'allServices',
-            element:<AllServices></AllServices>,
-            loader: ()=> fetch(`${import.meta.env.VITE_API_URL}/allServices`)
-        },
-        {
-            path:'login',
-            element:<Login></Login>
-        },
-        {
-            path:'register',
-            element:<Register></Register>
-        },
-        {
-            path:'addService',
-            element:<PrivateRoute>
-                <AddService></AddService>
-            </PrivateRoute>
-        },
-        {
-            path:'manageService',
-            element:<PrivateRoute>
-                <ManageService></ManageService>
-            </PrivateRoute>
-        }, 
-        {
-            path:'bookedService',
-            element:<PrivateRoute>
-                <BookedService></BookedService>
-            </PrivateRoute>
-        },
-        {
-            path:'serviceTodo',
-            element:<PrivateRoute>
-                <ServiceToDO></ServiceToDO>
-            </PrivateRoute>
-        },
-        {
-            path: 'details/:id',
-            element: <PrivateRoute>
-                <ServiceDetails></ServiceDetails>
-            </PrivateRoute>
-        }
-    ]
-    }
-])
+  {
+    path: "/",
+    element: <HomeLayout></HomeLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        index: true,
+        element: <Home></Home>,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/home`),
+      },
+      {
+        path: "allServices",
+        element: <AllServices></AllServices>,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/allServices`),
+      },
+      {
+        path: "login",
+        element: <Login></Login>,
+      },
+      {
+        path: "register",
+        element: <Register></Register>,
+      },
+      {
+        path: "addService",
+        element: (
+          <PrivateRoute>
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "manageService",
+        element: (
+          <PrivateRoute>
+            <ManageService></ManageService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "bookedService",
+        element: (
+          <PrivateRoute>
+            <BookedService></BookedService>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "serviceTodo",
+        element: (
+          <PrivateRoute>
+            <ServiceToDO></ServiceToDO>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "details/:id",
+        element: (
+          <PrivateRoute>
+            <ServiceDetails></ServiceDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "updateServices/:id",
+        element: (
+          <PrivateRoute>
+            <UpdateServices></UpdateServices>
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+]);
 
-export default router
+export default router;

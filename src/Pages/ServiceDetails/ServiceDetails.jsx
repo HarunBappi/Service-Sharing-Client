@@ -36,11 +36,11 @@ export default function ServiceDetails() {
         <div className="divider divider-accent text-[#C71F66]">
           Service Provider Information
         </div>
-        <div className="flex items-start justify-between">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between w-full">
           <div>
-            <h1 className="text-xl font-medium text-gray-800 dark:text-gray-400">
+            <h1 className="text-lg md:text-xl font-medium text-gray-800 dark:text-gray-400">
               Provider name:{" "}
-              <span className="text-base font-medium text-gray-500">
+              <span className="text-sm font-medium text-gray-500">
                 {service.provider?.name}
               </span>
             </h1>

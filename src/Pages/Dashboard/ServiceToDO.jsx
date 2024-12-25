@@ -22,7 +22,7 @@ export default function ServiceToDO() {
     axios
       .patch(`${import.meta.env.VITE_API_URL}/bookings/${id}`, { status })
       .then((res) => {
-        if (res.data.success) {
+        if (res.data.modifiedCount > 0) {
           // Update status in UI
           setBooked((prev) =>
             prev.map((service) =>

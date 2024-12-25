@@ -62,16 +62,6 @@ export default function Navbar() {
               All Services
             </NavLink>
           </li>
-          <li>
-            <NavLink
-              to="/services"
-              className={({ isActive }) =>
-                `${isActive ? "text-[#C71F66] font-semibold" : ""}`
-              }
-            >
-              Services
-            </NavLink>
-          </li>
           {user && (
             <li className="relative">
               <button onClick={handleDropdownToggle}>Dashboard</button>

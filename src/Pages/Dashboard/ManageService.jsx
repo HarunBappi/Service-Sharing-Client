@@ -1,13 +1,73 @@
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-
+import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
+import AuthContext from "./../../Providers/AuthContext";
 
 export default function ManageService() {
+  const { user } = useContext(AuthContext);
+  const [services, setServices] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (user?.email) {
+      axios
+        .get(`${import.meta.env.VITE_API_URL}/services?email=${user.email}`)
+        .then((res) => {
+          console.log("Filtered Services:", res.data);
+          setServices(res.data);
+          setLoading(false);
+        })
+        .catch((err) => console.error("Error fetching services:", err));
+    }
+  }, [user?.email]);
+
+  if (loading) return <span className="loading loading-bars loading-lg"></span>;
+
   return (
     <div>
       <Helmet>
-              <title>ShareServe | Manage Service</title>
-            </Helmet>
-      <h1>Manage Page</h1>
+        <title>ShareServe | Manage Service</title>
+      </Helmet>
+      <h1 className="text-2xl font-semibold text-center mt-5">
+        Manage Services
+      </h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
+        {services.map((service) => (
+          <div
+            key={service._id}
+            className="card card-compact bg-base-100 dark:bg-gray-900  shadow-xl mb-5 dark:text-white"
+          >
+            <figure>
+              <img
+                className="w-full h-[250px]"
+                src={service.imageUrl}
+                alt="Shoes"
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">{service.serviceName}</h2>
+              <p title={service.description}>
+                {service.description.length > 100
+                  ? service.description.slice(0, 100) + "...."
+                  : service.description}
+              </p>
+              <p>Price: {service.price} BDT</p>
+              <div className="card-actions">
+                <Link to={`/updateServices/${service._id}`}>
+                  <button className="btn text-white bg-[#C71F66] hover:bg-[#f14e92]">
+                    Update Services
+                  </button>
+                </Link>
+                <button className="btn text-2xl text-red-600 bg-[#f79dc2] hover:bg-[#f14e92]">
+                  <MdDelete></MdDelete>
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
-  )
+  );
 }
