@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 import { MdDelete } from "react-icons/md";
 import { Link } from "react-router-dom";
 import AuthContext from "./../../Providers/AuthContext";
@@ -23,6 +24,20 @@ export default function ManageService() {
     }
   }, [user?.email]);
 
+  // Handle Delete Service
+
+  const handleDeleteService = (id) => {
+    axios
+      .delete(`${import.meta.env.VITE_API_URL}/services/${id}`)
+      .then((res) => {
+        if (res.data.deletedCount > 0) {
+          setServices((prev) => prev.filter((service) => service._id !== id));
+          toast.success("Service deleted successfully!");
+        }
+      });
+  };
+
+  // Loadin Spniner
   if (loading) return <span className="loading loading-bars loading-lg"></span>;
 
   return (
@@ -30,7 +45,7 @@ export default function ManageService() {
       <Helmet>
         <title>ShareServe | Manage Service</title>
       </Helmet>
-      <h1 className="text-2xl font-semibold text-center mt-5">
+      <h1 className="text-2xl font-semibold text-center mt-5 text-[#C71F66]">
         Manage Services
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5">
@@ -60,7 +75,10 @@ export default function ManageService() {
                     Update Services
                   </button>
                 </Link>
-                <button className="btn text-2xl text-red-600 bg-[#f79dc2] hover:bg-[#f14e92]">
+                <button
+                  onClick={() => handleDeleteService(service._id)}
+                  className="btn text-2xl text-red-600 bg-[#f79dc2] hover:bg-[#f14e92]"
+                >
                   <MdDelete></MdDelete>
                 </button>
               </div>

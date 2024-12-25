@@ -36,7 +36,7 @@ export default function UpdateServices() {
           <Helmet>
                   <title>ShareServe | Update Service</title>
                 </Helmet>
-            <div className="card bg-green-100 w-2/3 mx-auto shadow-2xl">
+            <div className="card bg-[#f8b3d0] w-3/4 mx-auto shadow-2xl">
               <form onSubmit={handleUpdate} className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -102,7 +102,7 @@ export default function UpdateServices() {
                   ></textarea>
                 </div>
                 <div className="form-control mt-6">
-                  <button className="btn btn-primary">Updated Service</button>
+                  <button className="btn text-white bg-[#C71F66] hover:bg-[#f14e92]">Updated Service</button>
                 </div>
               </form>
             </div>

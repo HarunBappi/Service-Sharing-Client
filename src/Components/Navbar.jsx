@@ -67,7 +67,7 @@ export default function Navbar() {
               <button onClick={handleDropdownToggle}>Dashboard</button>
               {/* Submenu */}
               {isDropdownOpen && (
-                <ul className="absolute bg-white shadow-lg rounded-md mt-2 p-2 w-40 z-10">
+                <ul className="absolute bg-white shadow-lg rounded-md mt-2 p-2 w-40 z-10 dark:bg-gray-900 ">
                   <li>
                     <NavLink
                       to="/addService"
