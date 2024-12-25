@@ -9,12 +9,15 @@ export default function BookedService() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
+    if(user?.email){
+      axios
       .get(`${import.meta.env.VITE_API_URL}/bookings/${user?.email}`)
       .then((res) => {
         setBooked(res.data);
         setLoading(false);
       });
+    }
+    
   }, [user?.email]);
 
   if (loading) return <span className="loading loading-dots loading-lg"></span>;

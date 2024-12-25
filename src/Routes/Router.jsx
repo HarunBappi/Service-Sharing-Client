@@ -10,7 +10,6 @@ import ServiceToDO from "../Pages/Dashboard/ServiceToDO";
 import ErrorPage from "../Pages/ErrorPage";
 import Home from "../Pages/Home/Home";
 import ServiceDetails from "../Pages/ServiceDetails/ServiceDetails";
-import Services from "../Pages/Services";
 import PrivateRoute from "./PrivateRoute";
 
 
@@ -26,10 +25,6 @@ const router = createBrowserRouter([
             element:<Home></Home>,
             loader : ()=> fetch(`${import.meta.env.VITE_API_URL}/home`)
         },
-        {
-            path: 'services',
-            element:<Services></Services>
-        }, 
         {
             path: 'allServices',
             element:<AllServices></AllServices>,
@@ -51,15 +46,21 @@ const router = createBrowserRouter([
         },
         {
             path:'manageService',
-            element:<ManageService></ManageService>
+            element:<PrivateRoute>
+                <ManageService></ManageService>
+            </PrivateRoute>
         }, 
         {
             path:'bookedService',
-            element:<BookedService></BookedService>
+            element:<PrivateRoute>
+                <BookedService></BookedService>
+            </PrivateRoute>
         },
         {
             path:'serviceTodo',
-            element:<ServiceToDO></ServiceToDO>
+            element:<PrivateRoute>
+                <ServiceToDO></ServiceToDO>
+            </PrivateRoute>
         },
         {
             path: 'details/:id',
