@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import AuthContext from "../../Providers/AuthContext";
 
 
@@ -24,7 +25,7 @@ export default function BookingModal({service, closeModal}) {
           serviceStatus: "pending",
         };
  //  data Fatch server side
-        axios.post("http://localhost:3000/bookings", bookingData )
+        axios.post(`${import.meta.env.VITE_API_URL}/bookings`, bookingData )
             .then((res) => res.json())
             .then((data) => {
               if (data.insertedId) {
@@ -145,9 +146,12 @@ export default function BookingModal({service, closeModal}) {
               className="input input-bordered"
             />
           </div>
+          <Link to='/bookedService'>
           <button type="submit" className="btn btn-primary mt-4">
             Purchase
           </button>
+          </Link>
+          
           <button onClick={closeModal} className="btn btn-ghost mt-4">
             Cancel
           </button>
