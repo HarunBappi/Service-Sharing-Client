@@ -1,8 +1,19 @@
-# React + Vite
+# Assignment Category:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- 02
 
-Currently, two official plugins are available:
+# Name of Your Project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ShareServe
+
+# Project Livelink.
+
+-
+
+# 5-key features
+
+- Authentication (Login/Registration)
+- Routing, Navigation and React swiper
+- CRUD Operation and Using Axios
+- State Management with Context API
+- Using Express js and Mongodb Atlas

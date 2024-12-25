@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
+import BookingModal from "./BookingModal";
 
 export default function ServiceDetails() {
   const { id } = useParams();
   const [service, setService] = useState([]);
+  const [modal, setModal] = useState(false)
+
+  const openModal = ()=> setModal(true)
+  const closeModal = ()=> setModal(false)
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/allServices`)
       .then((res) => res.json())
@@ -38,7 +44,7 @@ export default function ServiceDetails() {
                 {service.provider?.name}
               </span>
             </h1>
-            <p className="flex items-center gap-3 text-xl font-medium text-gray-800 dark:text-gray-400">
+            <p className="flex items-center gap-3 text-xl font-medium mt-2 text-gray-800 dark:text-gray-400">
               Provider Image:{" "}
               <img
                 className="w-12 rounded-full border-[#C71F66] border"
@@ -57,7 +63,11 @@ export default function ServiceDetails() {
             </h4>
           </div>
         </div>
-        <button className='btn text-xl text-white bg-[#C71F66] hover:bg-[#f14e92]'>Book Now</button>
+
+        <button onClick={openModal} className='btn text-xl text-white bg-[#C71F66] hover:bg-[#f14e92]'>Book Now</button>
+{
+  modal && <BookingModal service={service} closeModal={closeModal}></BookingModal>
+}
       </div>
     </div>
   );
