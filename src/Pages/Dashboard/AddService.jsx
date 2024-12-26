@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
@@ -33,23 +34,22 @@ const servicesData = {
 
 }
 
- fetch('http://localhost:3000/add-services',{
-   method : 'POST',
-    headers : {
-      'content-type' : 'application/json'
-    },
-    body : JSON.stringify(servicesData)
- })
- .then(res => res.json())
- .then(result => {
-  if(result.insertedId){
-    toast.success('Services added Successfully!')
-    navigate('/')
+axios
+.post(`${import.meta.env.VITE_API_URL}/add-services`, servicesData, {withCredentials: true},  {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+.then(res => {
+  const result = res.data; 
+  if (result.insertedId) {
+    toast.success('Services added Successfully!');
+    navigate('/'); 
   }
- })
- .catch(err => {
-  console.log(err.message)
- })
+})
+.catch(error => {
+  console.error(error.message); 
+});
 
 }
 
