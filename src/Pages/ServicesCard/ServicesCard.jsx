@@ -1,5 +1,5 @@
+
 import Aos from "aos";
-import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 export default function ServicesCard({ service, showServiceAre }) {
@@ -15,17 +15,14 @@ export default function ServicesCard({ service, showServiceAre }) {
 
   useEffect(() => {
     Aos.init({
-      offset: 200,
       duration: 1000,
-      delay: 100,
     });
-    Aos.refresh();
   }, []);
 
   return (
     <div
       className="card card-compact bg-base-100 dark:bg-gray-900  shadow-xl mb-5 dark:text-white"
-      // data-aos="flip-left"
+      data-aos="flip-left"
     >
       <figure>
         <img className="w-full h-[250px]" src={imageUrl} alt="Shoes" />

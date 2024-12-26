@@ -54,10 +54,10 @@ export default function ServiceToDO() {
           <thead>
             <tr>
               <th></th>
-              <th>service Name</th>
-              <th>Booked By</th>
-              <th>Service Status</th>
-              <th>Update Status</th>
+              <th className="dark:text-white">service Name</th>
+              <th className="dark:text-white">Booked By</th>
+              <th className="dark:text-white">Service Status</th>
+              <th className="dark:text-white">Update Status</th>
             </tr>
           </thead>
           <tbody>
@@ -70,10 +70,10 @@ export default function ServiceToDO() {
             ) : (
               booked.map((serv, idx) => (
                 <tr key={serv._id}>
-                  <th>{idx + 1}</th>
-                  <td>{serv.serviceName}</td>
-                  <td>{serv.userName}</td>
-                  <td>{serv.serviceStatus}</td>
+                  <th className="dark:text-[#C71F66]">{idx + 1}</th>
+                  <td className="dark:text-[#C71F66]">{serv.serviceName}</td>
+                  <td className="dark:text-[#C71F66]">{serv.userName}</td>
+                  <td className="dark:text-[#C71F66]">{serv.serviceStatus}</td>
                   <td>
                     <select
                       id="status-dropdown"

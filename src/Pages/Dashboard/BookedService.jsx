@@ -33,19 +33,19 @@ export default function BookedService() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-5 container mx-auto">
         {booked.length === 0 ? (
-          <p>No booked services found.</p>
+          <p className="dark:text-white">No booked services found.</p>
         ) : (
           booked.map((service) => (
             <div
               key={service._id}
-              className="service-card border rounded p-4 mb-4 shadow space-y-1"
+              className="service-card border rounded p-4 mb-4 shadow space-y-1 dark:text-white"
             >
               <img
                 src={service.serviceImage}
                 alt={service.serviceName}
                 className="w-full h-44 rounded-md"
               />
-              <h3 className="text-xl font-bold">{service.serviceName}</h3>
+              <h3 className="text-xl font-bold ">{service.serviceName}</h3>
               <p>Provider: {service.providerName}</p>
               <p>Date: {new Date(service.serviceDate).toLocaleDateString()}</p>
               <p>Status: {service.status ? service.status : service.serviceStatus}</p>
