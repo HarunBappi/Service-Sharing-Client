@@ -17,7 +17,6 @@ export default function ServiceDetails() {
       .then((data) => {
         const selectService = data.find((ser) => ser._id === id);
         setService(selectService);
-        console.log(selectService);
       });
   }, [id]);
 

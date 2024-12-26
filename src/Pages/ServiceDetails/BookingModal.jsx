@@ -26,9 +26,8 @@ export default function BookingModal({service, closeModal}) {
         };
  //  data Fatch server side
         axios.post(`${import.meta.env.VITE_API_URL}/bookings`, bookingData )
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
+            .then((res) => {
+              if (res.data) {
                 alert("Booking successful!");
                 closeModal();
               }

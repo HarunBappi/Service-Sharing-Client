@@ -14,21 +14,19 @@ export default function ManageService() {
   useEffect(() => {
     if (user?.email) {
       axios
-        .get(`${import.meta.env.VITE_API_URL}/services?email=${user.email}`)
+        .get(`${import.meta.env.VITE_API_URL}/services?email=${user.email}`,{withCredentials: true})
         .then((res) => {
-          console.log("Filtered Services:", res.data);
           setServices(res.data);
           setLoading(false);
         })
-        .catch((err) => console.error("Error fetching services:", err));
+        .catch((err) => console.error("services not Found:", err));
     }
   }, [user?.email]);
 
   // Handle Delete Service
-
   const handleDeleteService = (id) => {
     axios
-      .delete(`${import.meta.env.VITE_API_URL}/services/${id}`)
+      .delete(`${import.meta.env.VITE_API_URL}/services/${id}`,{withCredentials:true})
       .then((res) => {
         if (res.data.deletedCount > 0) {
           setServices((prev) => prev.filter((service) => service._id !== id));
@@ -37,11 +35,30 @@ export default function ManageService() {
       });
   };
 
+    // Custom Modern Hot Toast Delete
+
+    const modernDelete = (id) => {
+      toast((t) => (
+        <div className="flex gap-3 items-center">
+          <div>
+           <p> Are you <b>Sure?</b></p>
+          </div>
+          <div className="flex gap-2">
+            <button className="bg-red-400 text-white px-3 py-1 rounded-md" onClick={()=>{
+              toast.dismiss(t.id)
+              handleDeleteService(id)
+            }}>YES</button>
+            <button className="bg-green-400 text-white px-3 py-1 rounded-md" onClick={() => toast.dismiss(t.id)}>Cancel</button>
+          </div>
+        </div>
+      ));
+    };
+
   // Loadin Spniner
   if (loading) return <span className="loading loading-bars loading-lg"></span>;
 
   return (
-    <div>
+    <div className="container mx-auto">
       <Helmet>
         <title>ShareServe | Manage Service</title>
       </Helmet>
@@ -71,13 +88,13 @@ export default function ManageService() {
               <p>Price: {service.price} BDT</p>
               <div className="card-actions">
                 <Link to={`/updateServices/${service._id}`}>
-                  <button className="btn text-white bg-[#C71F66] hover:bg-[#f14e92]">
+                  <button className="btn text-white bg-[#C71F66] hover:bg-[#f14e92] border-none">
                     Update Services
                   </button>
                 </Link>
                 <button
-                  onClick={() => handleDeleteService(service._id)}
-                  className="btn text-2xl text-red-600 bg-[#f79dc2] hover:bg-[#f14e92]"
+                  onClick={() => modernDelete(service._id)}
+                  className="btn text-2xl text-red-600 bg-[#f79dc2] hover:bg-[#f14e92] border-none"
                 >
                   <MdDelete></MdDelete>
                 </button>

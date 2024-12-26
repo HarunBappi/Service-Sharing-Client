@@ -40,7 +40,7 @@ export default function ServicesCard({ service, showServiceAre }) {
         <p>Price: {price} BDT</p>
         <div className="card-actions">
           <Link to={`/details/${_id}`}>
-            <button className="btn text-white bg-[#C71F66] hover:bg-[#f14e92]">
+            <button className="btn text-white bg-[#C71F66] hover:bg-[#f14e92] border-none">
               View Details
             </button>
           </Link>

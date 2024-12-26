@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLoaderData } from "react-router-dom";
@@ -10,11 +11,10 @@ export default function AllServices() {
   const [search, setSearch] = useState("");
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}/allServices?searchParams=${search}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setSearchServices(data);
-      });
+    axios.get(`${import.meta.env.VITE_API_URL}/allServices?searchParams=${search}`)
+    .then(res =>{
+      setSearchServices(res.data)
+    })
     setTimeout(() => {
       setLoading(false);
     }, 2000);

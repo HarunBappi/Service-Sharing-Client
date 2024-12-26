@@ -9,15 +9,15 @@ export default function BookedService() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if(user?.email){
+    if (user?.email) {
+      setLoading(true); 
       axios
-      .get(`${import.meta.env.VITE_API_URL}/bookings/${user?.email}`)
-      .then((res) => {
-        setBooked(res.data);
-        setLoading(false);
-      });
+        .get(`${import.meta.env.VITE_API_URL}/bookings/${user.email}`,{withCredentials: true})
+        .then((res) => {
+          setBooked(res.data); 
+          setLoading(false);  
+        })
     }
-    
   }, [user?.email]);
 
   if (loading) return <span className="loading loading-dots loading-lg"></span>;
@@ -27,7 +27,7 @@ export default function BookedService() {
       <Helmet>
         <title>ShareServe | Booked Service</title>
       </Helmet>
-      <h1 className="text-2xl text-center text-[#C71F66] font font-semibold mb-3 mt-6">
+      <h1 className="text-2xl text-center text-[#C71F66] font-semibold mb-3 mt-6">
         Your Booked Services
       </h1>
 
@@ -50,7 +50,10 @@ export default function BookedService() {
               <p>Date: {new Date(service.serviceDate).toLocaleDateString()}</p>
               <p>Status: {service.serviceStatus}</p>
               <p>Price: {service.price} BDT</p>
-              <p title={service.specialInstruction}>Special Instructions: {service.specialInstruction.substring(0,25)}...</p>
+              <p title={service.specialInstruction}>
+                Special Instructions:{" "}
+                {service.specialInstruction.substring(0, 25)}...
+              </p>
             </div>
           ))
         )}

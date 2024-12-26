@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import toast from "react-hot-toast";
@@ -31,11 +32,16 @@ export default function Login() {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
+
 
     handleSignIn(email, password)
       .then((result) => {
-        console.log("sign in successfully done", result.user);
+        const user = {email: result.user.email}
+        axios.post(`${import.meta.env.VITE_API_URL}/jwt`, user,{
+        withCredentials: true})
+        .then(res => {
+          console.log(res.data)
+        })
         toast.success("log in successfully done!!");
         navigate(location.state?.from?.pathname || "/", { replace: true });
       })

@@ -11,7 +11,7 @@ export default function UpdateServices() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/services/${id}`)
+    axios.get(`${import.meta.env.VITE_API_URL}/services/${id}`,{withCredentials:true})
     .then((res) => setService(res.data));
   }, [id]);
 
@@ -21,7 +21,7 @@ export default function UpdateServices() {
     const updatedData = Object.fromEntries(formData.entries());
 
     axios
-      .put(`${import.meta.env.VITE_API_URL}/services/${id}`, updatedData)
+      .put(`${import.meta.env.VITE_API_URL}/services/${id}`, updatedData, {withCredentials:true})
       .then(() => {
         toast.success("Service updated successfully!");
         navigate("/manageService");

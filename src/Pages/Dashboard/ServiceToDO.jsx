@@ -11,7 +11,7 @@ export default function ServiceToDO() {
   // All Booked Service Load
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/bookings/${user?.email}`)
+      .get(`${import.meta.env.VITE_API_URL}/bookings/${user?.email}`,{withCredentials:true})
       .then((res) => {
         setBooked(res.data);
         setLoading(false);
@@ -20,7 +20,7 @@ export default function ServiceToDO() {
 
   const handleStatusChange = (id, status) => {
     axios
-      .patch(`${import.meta.env.VITE_API_URL}/bookings/${id}`, { status })
+      .patch(`${import.meta.env.VITE_API_URL}/bookings/${id}`, { status }, {withCredentials:true})
       .then((res) => {
         if (res.data.modifiedCount > 0) {
           // Update status in UI

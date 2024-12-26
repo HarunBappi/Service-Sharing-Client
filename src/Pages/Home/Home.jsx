@@ -15,7 +15,7 @@ export default function Home() {
       </Helmet>
       <Banner></Banner>
         {/* Popular Services */}
-        <h1 className="text-3xl ml-10 mb-5 mt-8">Popular Services</h1>
+        <h1 className="text-3xl ml-10 mb-5 mt-8 text-[#C71F66] font-semibold">Popular Services</h1>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 container mx-auto">
           
           {services.map(service => <ServicesCard key={service._id} service={service} showServiceAre={false}></ServicesCard>)}
