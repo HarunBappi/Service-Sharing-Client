@@ -2,8 +2,8 @@ import howWorks from "../../assets/howWorks.jpg";
 
 export default function HowWorks() {
   return (
-    <div data-aos="flip-left">
-      <div className="w-4/6 mx-auto pt-5">
+    <div>
+      <div className="w-4/6 mx-auto pt-5"  data-aos="flip-left">
         <h1 className="text-3xl  text-gray-800 dark:text-white">
           -How it works
         </h1>
