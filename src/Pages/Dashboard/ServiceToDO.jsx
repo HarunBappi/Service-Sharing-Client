@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
+import toast from "react-hot-toast";
 import AuthContext from "../../Providers/AuthContext";
 
 export default function ServiceToDO() {
@@ -19,6 +20,7 @@ export default function ServiceToDO() {
   }, [user?.email]);
 
   const handleStatusChange = (id, status) => {
+     
     axios
       .patch(`${import.meta.env.VITE_API_URL}/bookings/${id}`, { status }, {withCredentials:true})
       .then((res) => {
@@ -31,9 +33,9 @@ export default function ServiceToDO() {
                 : service
             )
           );
-          alert("Service status updated successfully!");
+          toast.success("Service status updated successfully!")
         } else {
-          alert("Failed to update service status.");
+          toast.error("Failed to update service status.");
         }
       })
       .catch((err) => console.error(err));
@@ -75,7 +77,7 @@ export default function ServiceToDO() {
                   <td>
                     <select
                       id="status-dropdown"
-                      value={serv.serviceStatus}
+                      value={serv.status}
                       onChange={(e) =>
                         handleStatusChange(serv._id, e.target.value)
                       }

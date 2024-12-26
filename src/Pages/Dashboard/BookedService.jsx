@@ -48,7 +48,7 @@ export default function BookedService() {
               <h3 className="text-xl font-bold">{service.serviceName}</h3>
               <p>Provider: {service.providerName}</p>
               <p>Date: {new Date(service.serviceDate).toLocaleDateString()}</p>
-              <p>Status: {service.serviceStatus}</p>
+              <p>Status: {service.status ? service.status : service.serviceStatus}</p>
               <p>Price: {service.price} BDT</p>
               <p title={service.specialInstruction}>
                 Special Instructions:{" "}
