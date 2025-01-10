@@ -1,6 +1,6 @@
 
-import Aos from "aos";
-import { useEffect } from "react";
+
+
 import { Link } from "react-router-dom";
 export default function ServicesCard({ service, showServiceAre }) {
   const {
@@ -12,20 +12,12 @@ export default function ServicesCard({ service, showServiceAre }) {
     price,
     serviceArea,
   } = service;
-
-  useEffect(() => {
-    Aos.init({
-      duration: 1000,
-    });
-  }, []);
-
   return (
     <div
-      className="card card-compact bg-base-100 dark:bg-gray-900  shadow-xl mb-5 dark:text-white"
-      data-aos="flip-left"
+      className="card card-compact bg-base-100 dark:bg-gray-900  shadow-xl mb-5 dark:text-white h-[500px]"
     >
       <figure>
-        <img className="w-full h-[250px]" src={imageUrl} alt="Shoes" />
+        <img className="w-full h-[200px] object-cover" src={imageUrl} alt="Shoes" />
       </figure>
       <div className="card-body">
         <h2 className="card-title">{serviceName}</h2>
@@ -34,11 +26,11 @@ export default function ServicesCard({ service, showServiceAre }) {
             ? description.slice(0, 100) + "...."
             : description}
         </p>
-        <p>Price: {price} BDT</p>
+        <p className="text-[#C71F66] font-semibold">Price:  <span className="text-black font-normal">  {price} BDT</span></p>
         <div className="card-actions">
           <Link to={`/details/${_id}`}>
             <button className="btn text-white bg-[#C71F66] hover:bg-[#f14e92] border-none">
-              View Details
+              See Details
             </button>
           </Link>
         </div>
@@ -46,33 +38,25 @@ export default function ServicesCard({ service, showServiceAre }) {
         <div className="divider divider-accent text-[#C71F66]">
           Service Provider Information
         </div>
-        <div className="flex flex-col items-start gap-2">
-          <div className="ml-6">
-            <h1 className="text-xl font-medium text-gray-800 dark:text-gray-400">
-              Provider name:{" "}
-              <span className="text-base font-medium text-gray-500">
-                {provider?.name}
-              </span>
-            </h1>
-            {showServiceAre ? (
-              <h4 className="text-xl font-medium text-gray-600">
-                Service Area:{" "}
-                <span className="text-sm font-semibold">{serviceArea}</span>
-              </h4>
-            ) : (
-              <div className="w-auto"></div>
-            )}
-          </div>
-          <div className="ml-6">
-            <p className="flex items-center gap-3 text-xl font-medium text-gray-800 dark:text-gray-400">
-              Provider Image:{" "}
+        <div className="flex items-center justify-between gap-2">
+          <div className="flex gap-2 items-center">
               <img
                 className="w-12 rounded-full border-[#C71F66] border"
                 src={provider?.photo}
                 alt=""
               />
-            </p>
+              <span className="text-xs font-medium text-gray-500">
+                {provider?.name}
+              </span>
           </div>
+          
+          {showServiceAre ? (
+            <div className="w-1/3 flex justify-end">
+                <span className="text-sm">{serviceArea}</span>
+                </div>
+            ) : (
+              <div className="w-auto"></div>
+            )}
         </div>
       </div>
     </div>

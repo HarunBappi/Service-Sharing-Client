@@ -7,7 +7,6 @@
 
 body {
   font-family: "Poppins", serif;
-  overflow-x: hidden;
 }
 /* Dark */
 .dark {
@@ -15,5 +14,6 @@ body {
 }
 
 html {
+  overflow-x: hidden;
   overflow-y: auto; /* Vertical scrolling allow */
 }
