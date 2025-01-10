@@ -5,9 +5,9 @@ import { useLoaderData } from "react-router-dom";
 import ServicesCard from "./ServicesCard/ServicesCard";
 
 export default function AllServices() {
-  // const [sort, setSort] = useState(false);
   const services = useLoaderData();
   const [searchServices, setSearchServices] = useState(services);
+  const [sort, setSort] = useState(false);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
@@ -16,6 +16,7 @@ export default function AllServices() {
       .get(`${import.meta.env.VITE_API_URL}/allServices?searchParams=${search}`)
       .then((res) => {
         setSearchServices(res.data);
+        setSort(false)
       });
     setTimeout(() => {
       setLoading(false);
@@ -28,6 +29,16 @@ export default function AllServices() {
         <span className="loading loading-spinner text-info"></span>
       </div>
     );
+  }
+  const handleSortByPrice = ()=>{
+   if(sort){
+    setSearchServices(services)
+    setSort(false)
+   }else{
+    const sortedServices = [...searchServices].sort((a,b)=>a.price - b.price)
+    setSearchServices(sortedServices)
+    setSort(true)
+   }
   }
   return (
     <div>
@@ -51,14 +62,15 @@ export default function AllServices() {
           />
         </div>
         {/* Sorting  */}
-        {/* <div>
+        <div>
           <button
-            onClick={() => setSort(!sort)}
-            className={`btn bg-[#C71F66] text-white hover:bg-[#f14e92] ${sort && "bg-green-800 hover:bg-green-500"}`}
+            onClick={()=>handleSortByPrice()}
+            className={`btn bg-[#C71F66] text-white hover:bg-[#f14e92] ${sort && "bg-green-800 hover:bg-green-500"} `}
           >
             {sort === true ? 'Sorted by Price' : "Sort by Price"}
+         
           </button>
-        </div> */}
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 container mx-auto">
         {searchServices.map((service) => (
