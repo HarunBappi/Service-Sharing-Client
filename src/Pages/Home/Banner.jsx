@@ -22,7 +22,7 @@ export default function Banner() {
     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
   };
   return (
-    <div className="mt-32 mb-6">
+    <div className="mt-6 mb-6">
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

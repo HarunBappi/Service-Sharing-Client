@@ -39,7 +39,9 @@ export default function HomeLayout() {
         
         <Navbar></Navbar>
         {/* Outlet */}
-        <Outlet></Outlet>
+       <div className='pt-24'>
+       <Outlet></Outlet>
+       </div>
         {/* Footer */}
         <Footer></Footer>
     </div>
