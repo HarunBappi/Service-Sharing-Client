@@ -10,7 +10,7 @@ export default function Home() {
   const services = useLoaderData()
   console.log("output",services)
   return (
-    <div>
+    <div className="w-11/12 mx-auto">
       <Helmet>
         <title>ShareServe | Home</title>
       </Helmet>

@@ -20,7 +20,8 @@ export default function Navbar() {
   };
 
   return (
-    <div className="flex items-center justify-between container mx-auto shadow-md bg-base-100 px-2 md:px-4 py-2 dark:bg-gray-900 dark:text-white">
+    <div className="fixed z-10 w-11/12 left-1/2 -translate-x-1/2 opacity-80">
+    <div className="flex items-center justify-between  shadow-md bg-base-100 px-2 md:px-4 py-2 dark:bg-gray-900 dark:text-white">
       <div className="flex items-center gap-3">
         <div className="md:hidden text-2xl" onClick={() => setOpen(!open)}>
           {open === true ? (
@@ -127,6 +128,7 @@ export default function Navbar() {
         )}
         <DarkLight></DarkLight>
       </div>
+    </div>
     </div>
   );
 }

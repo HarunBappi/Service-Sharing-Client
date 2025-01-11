@@ -1,7 +1,3 @@
-# Assignment Category:
-
-- 02
-
 # Name of Your Project.
 
 - ShareServe
@@ -17,3 +13,7 @@
 - CRUD Operation and Using Axios
 - State Management with Context API
 - Using Express js and Mongodb Atlas
+
+# Run Your Local Machine in command
+
+- npm run dev
